@@ -1,0 +1,14 @@
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\bin\Debug\net8.0\slagsmålsspelet.exe
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\bin\Debug\net8.0\slagsmålsspelet.deps.json
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\bin\Debug\net8.0\slagsmålsspelet.runtimeconfig.json
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\bin\Debug\net8.0\slagsmålsspelet.dll
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\bin\Debug\net8.0\slagsmålsspelet.pdb
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\obj\Debug\net8.0\slagsmålsspelet.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\obj\Debug\net8.0\slagsmålsspelet.AssemblyInfoInputs.cache
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\obj\Debug\net8.0\slagsmålsspelet.AssemblyInfo.cs
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\obj\Debug\net8.0\slagsmålsspelet.csproj.CoreCompileInputs.cache
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\obj\Debug\net8.0\slagsmålsspelet.dll
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\obj\Debug\net8.0\refint\slagsmålsspelet.dll
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\obj\Debug\net8.0\slagsmålsspelet.pdb
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\obj\Debug\net8.0\slagsmålsspelet.genruntimeconfig.cache
+c:\Users\lukas.schnell\Documents\programmering 1\slagsmålsspelet\slagsmålsspelet\obj\Debug\net8.0\ref\slagsmålsspelet.dll
