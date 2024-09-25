@@ -171,12 +171,11 @@ class Pokemon
     public Move selectMove()
     {
         Console.WriteLine($"{name}, choose a move:");
-        // for (int i = 0; i < moves.Count; i++)
-        foreach (Move move in moves)
+        for (int i = 0; i < moves.Count; i++)
         {
-            Console.WriteLine();
+            Console.WriteLine(moves[i].getInfo);
         }
-
+        Console.ReadLine();
         int moveIndex = -1;
         while (moveIndex < 0 || moveIndex >= moves.Count)
         {
@@ -313,13 +312,6 @@ class Move
 
     public string getInfo(string name, string category, int basePower, int accuracy, string type, int? priority = null, int? additionalEffectChance = null, string? additionalEffect = null)
     {
-
-        Console.WriteLine($"{this.name}");
-        Console.WriteLine($"Category: {this.category}");
-        Console.WriteLine($"Base Power: {this.basePower}");
-        Console.WriteLine($"Accuracy: {this.accuracy}");
-        Console.WriteLine($"Type: {this.type}");
-        Console.WriteLine($"Priority: {this.priority}");
         if (this.additionalEffectChance != null)
         {
             Console.WriteLine($"Additional effect chance: {this.additionalEffectChance}");
@@ -332,10 +324,7 @@ class Move
         {
             additionalEffect = "none";
         }
-
-        Console.ReadLine();
-
-        return $"{name}-{category}-{type}(Power:{basePower} Accuracy:{accuracy} Additional effect: {additionalEffect})";
+        return $"{name}-{category}-{type}(Power:{basePower} Accuracy:{accuracy}% Additional effect: {additionalEffect})";
     }
 
     private float calculateDamage(Pokemon attacker, Pokemon defender)
