@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Security.Authentication.ExtendedProtection;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks.Dataflow;
+
+
 //floccinaucinihilipilification 
 Console.WriteLine("skriv ditt namn");
 string? namn = Console.ReadLine();
@@ -19,9 +21,9 @@ Move rockSmash = new Move("Rock Smash", "phyiscal", 50, 90, "fighting", 0);
 Move scratch = new Move("Scratch", "physical", 40, 100, "normal", 0);
 
 Pokemon mudkip = new Pokemon("Mudkip", 50, "water", 70, 50, 50, 50, 50, 40, new List<Move> { waterGun, rockSmash });
-mudkip.writeInfo();
+mudkip.WriteInfo();
 Pokemon charmander = new Pokemon("Charmander", 50, "fire", 39, 52, 43, 60, 50, 65, new List<Move> { scratch });
-charmander.writeInfo();
+charmander.WriteInfo();
 
 battleLoop(mudkip, charmander);
 
@@ -39,9 +41,6 @@ void battleLoop(Pokemon playerPokemon, Pokemon AiPokemon)
         // choose moves script here 
         Move playerMoveToUse = playerPokemon.selectMove();
         Move AiMoveToUse = scratch;
-
-
-
 
 
         //speed och priority check
@@ -138,6 +137,7 @@ class Pokemon
     public List<Move> moves = new List<Move>();
     public List<Move> learnableMoves = new List<Move>();
     public string statusCondition;
+    float attackMultiplier, defenseMultiplier, specialAttackMultiplier, specialDefenseMultiplier, speedMultiplier = 1;
 
     //räknar ut hp
     private int calculateHp(int baseHp, int hpIV, int level)
@@ -149,7 +149,7 @@ class Pokemon
     {
         return (((2 * baseStat) + statIV + (effortValues / 4)) * level / 100) + 5;
     }
-    public void writeInfo()
+    public void WriteInfo()
     {
         Console.WriteLine($"{this.name}");
         Console.WriteLine($"level: {this.level}");
@@ -171,33 +171,41 @@ class Pokemon
     public Move selectMove()
     {
         Console.WriteLine($"{name}, choose a move:");
+
+        // visa listan av flurps
         for (int i = 0; i < moves.Count; i++)
         {
-            Console.WriteLine(moves[i].getInfo);
+            Console.WriteLine($"{i + 1}. {moves[i].getInfo()}");
         }
-        Console.ReadLine();
+
         int moveIndex = -1;
         while (moveIndex < 0 || moveIndex >= moves.Count)
         {
             Console.Write("Enter the number of the move: ");
             if (int.TryParse(Console.ReadLine(), out moveIndex))
             {
-                moveIndex--; // Convert to 0-based index
+                moveIndex--; //konvertera till 0-baserad index
+                Console.WriteLine("");
+                Console.ReadLine();
                 if (moveIndex < 0 || moveIndex >= moves.Count)
                 {
                     Console.WriteLine("Invalid choice, try again.");
+                    Console.ReadLine();
                 }
             }
             else
             {
                 Console.WriteLine("Invalid input, enter a number.");
+                Console.ReadLine();
             }
         }
 
         return moves[moveIndex];
     }
 
-    public void takeDamage(float damage)
+
+
+    public void TakeDamage(float damage)
     {
         this.hp -= damage;
 
@@ -215,12 +223,9 @@ class Pokemon
         }
     }
 
-
-
     // hur faan ska man göra det här
     public void handleStatusConditions()
     {
-
         if (statusCondition == "paralysed")
         {
             this.speed = MathF.Round(this.speed / 2);
@@ -232,7 +237,11 @@ class Pokemon
     }
     public void statChanges()
     {
-
+        attack = MathF.Round(attack * attackMultiplier);
+        defense = MathF.Round(defense * defenseMultiplier);
+        specialAttack = MathF.Round(specialAttack * specialDefenseMultiplier);
+        specialDefense = MathF.Round(specialDefense * specialDefenseMultiplier);
+        speed = MathF.Round(speed * speedMultiplier);
     }
 
 
@@ -263,13 +272,10 @@ class Pokemon
         this.speed = calculateStat(baseSpeed, speedIV, level);
 
         maxHp = MathF.Round(this.hp);
-
         this.moves.AddRange(moveSet);
 
     }
 }
-
-
 
 
 
@@ -310,21 +316,9 @@ class Move
         Console.ReadLine();
     }
 
-    public string getInfo(string name, string category, int basePower, int accuracy, string type, int? priority = null, int? additionalEffectChance = null, string? additionalEffect = null)
+    public string getInfo()
     {
-        if (this.additionalEffectChance != null)
-        {
-            Console.WriteLine($"Additional effect chance: {this.additionalEffectChance}");
-        }
-        if (this.additionalEffect != null)
-        {
-            additionalEffect = this.additionalEffect;
-        }
-        else
-        {
-            additionalEffect = "none";
-        }
-        return $"{name}-{category}-{type}(Power:{basePower} Accuracy:{accuracy}% Additional effect: {additionalEffect})";
+        return $"{name} ({category}, Power: {basePower}, Accuracy: {accuracy}%)";
     }
 
     private float calculateDamage(Pokemon attacker, Pokemon defender)
@@ -371,7 +365,7 @@ class Move
             return;
         }
         float damage = calculateDamage(user, target);
-        target.takeDamage(damage);
+        target.TakeDamage(damage);
     }
 
 
