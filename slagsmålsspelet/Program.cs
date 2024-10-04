@@ -33,8 +33,6 @@ else
 }
 
 
-
-
 Move waterGun = new Move("Water Gun", "special", 40, 100, "water", 0);
 Move rockSmash = new Move("Rock Smash", "phyiscal", 50, 90, "fighting", 0);
 Move scratch = new Move("Scratch", "physical", 40, 100, "normal", 0);
@@ -211,8 +209,6 @@ void BattleLoop(Pokemon playerPokemon, Pokemon aiPokemon)
     }
     else
     {
-
-
         Console.WriteLine("You failed at becoming the pokemon master! :(");
     }
     Console.ReadLine();
@@ -254,7 +250,8 @@ class Pokemon
     {
         Console.WriteLine($"{this.name}");
         Console.WriteLine($"level: {this.level}");
-        Console.WriteLine($"type: {this.type + this.type2}");
+        if (type2 != null) Console.WriteLine($"type: {this.type}, {this.type2}");
+        else Console.WriteLine($"type: {this.type}");
         Console.WriteLine($"hp: {this.hp}");
         Console.WriteLine($"attack: {this.attack}");
         Console.WriteLine($"defense: {this.defense}");
@@ -432,8 +429,6 @@ class Move
                         Console.WriteLine($"{user.name}'s attack rose!");
                         break;
                     case 2:
-
-
                         user.defense = MathF.Round(user.defense * (1 + additionalEffectAmount));
                         Console.WriteLine($"{user.name}'s defense rose!");
                         break;
